@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
+		<script type="text/javascript" src="https://raw.githubusercontent.com/lodash/lodash/2.4.1/dist/lodash.js"></script>
+		<script type="text/javascript" src="Lite.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+					Personnalized basic Lite.View
+				 */
+				var MainView = Lite.View.extend({
+					parentElName: '#Main',
+					template: $('#MainTpl').html(),
+					events: {
+						'span mouseover' : function() {
+							alert('span mouseover');
+						},
+						'button#success click' : function() {
+							alert('button clicked : impossible it\'s wrong element name');
+						},
+						'button.validate click' : function() {
+							alert('button.validate clicked');
+						}
+					}
+				});
+
+				/*
+					Use
+				 */
+				var mainView = new MainView();
+				mainView.render();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="Main">
+		</div>
+	</body>
+
+	<!-- Templates -->
+	<script type="text/template" id="MainTpl">
+		<div>
+			<h2>Test</h2>
+			<span>Lite</span>
+			<p>
+				<button class="validate">Validate</button>
+			</p>
+		</div>
+	</script>
+
+</html>
